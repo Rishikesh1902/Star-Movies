@@ -25,15 +25,26 @@ function renderMovies(movies) {
         var Poster = movies[i].Poster;
         var Title = movies[i].Title;
         var ID = movies[i].imdbID;
+        var Year = movies[i].Year;
+        var Plot = movies[i].Plot;
 
         output += `
-                <div class="col-md-3">
-                    <div class="well text-center">
-                    <img src="${Poster}">
-                    <h5>${Title}</h5>
-                    <a onClick="moviesSelected('${ID}')" class="btn btn-primary" href="#">Movies Details</a>
+                <a onClick="moviesSelected('${ID}')" href="#">
+                  <div class="card flip-card" style="width: 18rem; height:500px">
+                    <div class="flip-card-inner"> 
+                      <div class="flip-card-front">
+                        <img class="card-img-top" src="${Poster}" alt="${Title}">
+                        <div class="card-body">
+                          <h5 class="card-text" style="color:white; text-align:center;">${Title}</h5>
+                          <h6 class="card-text" style="color:white; text-align:center;">(${Year})</h6>
+                        </div>
+                      </div>
+                      <div class="flip-card-back">
+                        <p style="text-align:justify">${Plot}</p>
+                      </div>
                     </div>
-                </div>
+                  </div>
+                </a>
                 `;
     }
     document.querySelector('#movies').innerHTML = output;
@@ -72,13 +83,14 @@ function renderMovie(movie) {
                 <div class="col-md-8">
                 <h2>${movie.Title}</h2>
                 <ul class="list-group">
-                    <li class="list-group-item"><strong>Genre:</strong>${movie.Genre}</li>
-                    <li class="list-group-item"><strong>Released:</strong>${movie.Released}</li>
-                    <li class="list-group-item"><strong>Rated:</strong>${movie.Rated}</li>
-                    <li class="list-group-item"><strong>IMDB Rating:</strong>${movie.imdbRating}</li>
-                    <li class="list-group-item"><strong>Director:</strong>${movie.Director}</li>
-                    <li class="list-group-item"><strong>Writer:</strong>${movie.Writer}</li>
-                    <li class="list-group-item"><strong>Actors:</strong>${movie.Actors}</li>
+                    <li class="list-group-item"><strong>Genre : </strong>${movie.Genre}</li>
+                    <li class="list-group-item"><strong>Released : </strong>${movie.Released}</li>
+                    <li class="list-group-item"><strong>Rated : </strong>${movie.Rated}</li>
+                    <li class="list-group-item"><strong>IMDB Rating : </strong>${movie.imdbRating}</li>
+                    <li class="list-group-item"><strong>Director : </strong>${movie.Director}</li>
+                    <li class="list-group-item"><strong>Writer : </strong>${movie.Writer}</li>
+                    <li class="list-group-item"><strong>Actors : </strong>${movie.Actors}</li>
+                    <li class="list-group-item"><strong>BoxOffice : </strong>${movie.BoxOffice}</li>
                 </ul>
 
                 </div>
